@@ -51,9 +51,9 @@
   grid-template-columns: repeat(3, 1fr);
   grid-auto-columns: auto;
 }
-.main__iamge--dimensions {
-  width: 100%;
-  height: 70%;
+.main__image--dimensions {
+  width: 25vw;
+  height: 30vh;
   padding: auto;
   border-radius: 10px;
 }
