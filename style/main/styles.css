@@ -1,0 +1,179 @@
+/* Mixiins */
+/* Flex containers general structure */
+/* variables */
+/* place holder */
+.main__text {
+  position: absolute;
+  top: 60%;
+  right: 20%;
+}
+
+/* CSS */
+/* Pantalla pc */
+/* header section */
+.header {
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+.header__icon {
+  color: black;
+  font-size: 25px;
+}
+.header__logo {
+  width: 10vw;
+}
+
+/* main section */
+.main__intro {
+  width: 100%;
+  padding-top: 15px;
+  position: relative;
+}
+.main__image {
+  width: 100%;
+  height: auto;
+  padding: auto;
+}
+.main__text {
+  font-size: 40px;
+  color: #fff;
+  font-family: "Times New Roman";
+}
+.main__articles {
+  display: grid;
+  width: 100%;
+  height: 80%;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-columns: auto;
+}
+.main__iamge--dimensions {
+  width: 100%;
+  height: 70%;
+  padding: auto;
+  border-radius: 10px;
+}
+.main__container {
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+.main__container:hover {
+  opacity: 0.7;
+}
+
+/* footer section */
+.footer {
+  width: 100%;
+  border-top: 1px solid black;
+}
+.footer__container {
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+}
+.footer__img {
+  width: 5vw;
+}
+.footer__slogan {
+  font-size: 16px;
+  color: black;
+  font-family: "Gll Sans", "Gill Sans MT";
+}
+.footer__icon {
+  font-size: 24px;
+  color: black;
+  font-family: none;
+}
+
+/* prefer color scheme */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: rgba(0, 0, 0, 0.862745098);
+    color: white;
+  }
+  .footer__icon {
+    color: white;
+  }
+  .header__icon {
+    color: white;
+  }
+}
+/*  Iphone pro max && pixel 7 */
+@media screen and (min-width: 412px) and (max-width: 932px) {
+  /* Header section modification */
+  .header__icon {
+    font-size: clamp(1rem, 2vw, 2rem);
+    color: black;
+    font-family: none;
+  }
+  /* Main section Modification */
+  .main__intro {
+    width: 100%;
+    padding-top: 2px;
+  }
+  .main__text {
+    font-size: 1rem;
+    color: #fff;
+    font-family: "Times New Roman";
+  }
+  .main__image--dimensions {
+    width: 90%;
+    height: 70%;
+    padding: auto;
+    border-radius: 10px;
+  }
+  /* footer section modification */
+  .footer__container {
+    font-size: 1rem;
+    color: auto;
+    font-family: "Gill Sans";
+  }
+}
+/* Tablets */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  /* Header Section Modification */
+  .header {
+    /* Main section Modification */
+    /* footer section modification */
+  }
+  .header__icon {
+    font-size: 2.5rem;
+    color: black;
+    font-family: none;
+  }
+  .header .main__intro {
+    width: 100%;
+    padding-top: 5px;
+  }
+  .header .main__text {
+    font-size: 2rem;
+    color: #fff;
+    font-family: "Times New Roman";
+  }
+  .header .main__image--dimensions {
+    width: 90%;
+    height: 70%;
+    padding: auto;
+    border-radius: 10px;
+  }
+  .header .footer__container {
+    font-size: 1rem;
+    color: auto;
+    font-family: "Gill Sans";
+  }
+}
+@media (hover: hover) {
+  .main__container:hover {
+    opacity: 0.5;
+  }
+}/*# sourceMappingURL=styles.css.map */

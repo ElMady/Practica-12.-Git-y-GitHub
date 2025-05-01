@@ -1,0 +1,225 @@
+/* Mixiins */
+
+/* Flex containers general structure */
+@mixin general_flex_container ($width,$height,$justifyContent,$AlingContent){
+    display: flex;
+    width: $width;
+    height: $height;
+    justify-content: $justifyContent;
+    align-items: $AlingContent;
+    @content
+}
+
+@mixin general_grid_container ($width,$height,$template-row,$template_columns){
+    display: grid;
+    width: $width;
+    height: $height;
+    grid-template-rows: $template-row;
+    grid-template-columns: $template_columns;
+    grid-auto-columns: auto;
+}
+
+@mixin img_dimention ($width,$height,$padding){
+    width: $width;
+    height: $height;
+    padding: $padding;
+    @content
+}
+
+@mixin text_parameters ($font_size,$color,$font_family){
+    font-size: $font_size;
+    color: $color;
+    font-family: $font_family;
+}
+
+/* variables */
+$fullWidth: 100%;
+$border-line: 1px solid black;
+
+/* place holder */
+%frontImgTxt{
+    position: absolute;
+    top: 60%;
+    right: 20%;
+}
+
+
+/* CSS */
+
+/* Pantalla pc */
+/* header section */
+.header{
+    @include general_flex_container($fullWidth, auto, space-between, center){
+        border-bottom: $border-line;
+    }
+
+    &__icon{
+        color: black;
+        font-size: 25px;
+    }
+    &__logo{
+        width: 10vw;
+    }
+
+}
+
+/* main section */
+
+.main{
+
+    &__intro{
+        width: $fullWidth;
+        padding-top: 15px;
+        position: relative;
+    }
+
+    &__image{
+        @include img_dimention($fullWidth, auto, auto)
+    }
+
+    &__text{
+        @include text_parameters(40px,#fff ,'Times New Roman' );
+        @extend %frontImgTxt;
+    }
+
+    &__articles{
+        @include general_grid_container($fullWidth,80% ,repeat(3,1fr),repeat(3,1fr) )
+    }
+
+    &__iamge--dimensions{
+        @include img_dimention($fullWidth,70% ,auto ){
+            border-radius: 10px;
+        }
+    }
+
+    &__container{
+        @include general_flex_container($fullWidth,auto, center, center ){
+            padding: 5px;
+        }
+        &:hover{
+            opacity: 0.7;
+        }
+    }
+}
+
+/* footer section */
+
+.footer{
+    width: $fullWidth;
+    border-top: $border-line;
+
+    &__container{
+        @include general_flex_container($fullWidth,auto ,center ,center )
+    }
+
+    &__img{
+        width: 5vw;
+    }
+
+    &__slogan{
+        @include text_parameters(16px,black ,('Gll Sans','Gill Sans MT'));
+    }
+
+    &__icon{
+        @include text_parameters(24px, black ,none );
+    }
+}
+
+
+/* prefer color scheme */
+@media (prefers-color-scheme:dark){
+    body{
+        background-color: #000000dc;
+        color: white;
+    }
+
+    .footer__icon{
+        color: white;
+    }
+
+    .header__icon {
+        color: white;
+    }
+}
+
+/*  Iphone pro max && pixel 7 */
+@media screen and  (min-width:412px) and (max-width:932px){
+    /* Header section modification */
+    .header{
+        &__icon{
+            @include text_parameters(clamp(1rem,2vw,2rem),black ,none )
+        }
+    }
+
+    /* Main section Modification */
+    .main{
+        &__intro{
+            width: $fullWidth;
+            padding-top: 2px;
+        }
+
+        &__text{
+            @include text_parameters(1rem,#fff ,'Times New Roman' );
+        }
+
+        &__image--dimensions{
+            @include img_dimention(90%,70% ,auto ){
+                border-radius: 10px;
+            }
+        }
+    }
+
+    /* footer section modification */
+    .footer{
+        &__container{
+            @include text_parameters(clamp(0.5rem,1rem,2rem),auto ,'Gill Sans');
+        }
+        
+    }
+}
+
+/* Tablets */
+@media screen and (min-width:768px) and (max-width:1024px){
+    /* Header Section Modification */
+    .header{
+        &__icon{
+            @include text_parameters(clamp(1rem,2.5rem,3rem),black ,none )
+        }
+
+    /* Main section Modification */
+    .main{
+        &__intro{
+            width: $fullWidth;
+            padding-top: 5px;
+        }
+
+        &__text{
+            @include text_parameters(2rem,#fff ,'Times New Roman' );
+        }
+
+        &__image--dimensions{
+            @include img_dimention(90%,70% ,auto ){
+                border-radius: 10px;
+            }
+        }
+    }
+
+    /* footer section modification */
+    .footer{
+        &__container{
+            @include text_parameters(clamp(0.5rem,1rem,2rem),auto ,'Gill Sans');
+        }
+        
+    }
+    }
+
+}
+
+@media(hover:hover) {
+    .main{
+        &__container:hover{
+            opacity:0.5;
+        }
+    }
+    
+}

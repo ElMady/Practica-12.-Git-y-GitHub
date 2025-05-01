@@ -1,0 +1,144 @@
+/* Mixiins */
+
+/* Flex containers general structure */
+@mixin general_flex_container ($width,$height,$justifyContent,$AlingContent){
+    display: flex;
+    width: $width;
+    height: $height;
+    justify-content: $justifyContent;
+    align-items: $AlingContent;
+    @content
+}
+
+@mixin img_dimention ($width,$height,$padding){
+    width: $width;
+    height: $height;
+    padding: $padding;
+    @content
+}
+
+@mixin text_parameters ($font_size,$color,$font_family){
+    font-size: $font_size;
+    color: $color;
+    font-family: $font_family;
+}
+
+/* variables */
+$fullWidth: 100%;
+$border-line: 1px solid black;
+
+/* CSS  */
+
+/* PC */
+/* Header section*/
+.header{
+    @include general_flex_container($fullWidth,auto ,space-between ,center ){
+        border-bottom:$border-line ;
+        padding-bottom: 5px;
+    }
+
+    &__icon{
+        @include text_parameters(25px, black, auto);
+    }
+
+    &__img{
+        width: 10vw;
+    }
+}
+
+/* Main section */
+.main{
+    @include general_flex_container($fullWidth, auto, auto, auto){
+        padding-top:5px;
+    }
+
+    &__container{
+        width: 80%;
+        padding: 10px;
+    }
+
+    &__img{
+        width: 90%;
+        padding: 5px;
+    }
+
+    &__container--info{
+        width: 40%;
+        border-left: $border-line;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+
+    &__text{
+        @include text_parameters(1rem, auto, Georgia ); 
+    }
+
+    &__price{
+        @include text_parameters(2em, auto, Georgia);      
+    }
+}
+
+/* Footer Section */
+.footer{
+    width: $fullWidth;
+    border-top: $fullWidth;
+
+    &__container{
+        @include general_flex_container($fullWidth,auto ,center, center );
+    }
+
+    &__img{
+        width: 5vw;
+    }
+
+    &__container--slogan{
+        @include general_flex_container($fullWidth, auto, center, auto);
+        @include text_parameters(16px, black, 'Gill Sans')
+    }
+
+    &__icons{
+        @include text_parameters(24px, black, auto);
+    }
+}
+
+/* prefer color scheme */
+@media (prefers-color-scheme: dark) {
+    body {
+      background-color: rgba(0, 0, 0, 0.862745098);
+      color: white;
+    }
+    .footer__icon {
+      color: white;
+    }
+    .header__icon {
+      color: white;
+    }
+}
+
+@media screen and  (min-width:412px) and (max-width:932px){
+    .main{
+        @include general_flex_container($fullWidth, auto, space-between, center);
+
+        &__container--info{
+            width: 90%;
+            padding: 5px;
+            box-sizing: border-box;
+            border: none;
+            border-top: $border-line;
+        }
+
+        &__description{
+            @include text_parameters(1em, auto, Georgia);
+        }
+
+        &__price{
+            @include text_parameters(2em, auto, Georgia);
+        }
+    }
+
+    .footer{
+        &__slogan{
+            font-size: 16px;
+        }
+    }
+}
